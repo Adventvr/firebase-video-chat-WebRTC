@@ -19,25 +19,20 @@ var database = firebase.database().ref(),
 
 
 
-send(userId, 'data'); // TEST
+send(userId, 'data'); // TEST 
+
+database.on('child_added', read);
 
 
 
-// console.log(database);
-// console.log(pc);
+function read(e){
 
-
-
-database.on('child_added', function(e){
     var message = e.val().message,
         sender  = e.val().sender;
 
     console.log(message, sender);
-
-});
-
-
-
+    
+}
 
 function send(senderId, data){
     var msg = database.push({
