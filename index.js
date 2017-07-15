@@ -13,26 +13,38 @@ var database = firebase.database().ref(),
         'iceServers': [
             {'url': 'stun:stun.l.google.com:19302'} 
         ]
-    }),
-    userId = 'user'+new Date().getTime();
+    });
+
+
+
+var userId = 'user'+new Date().getTime(),
+    your = document.getElementById('your'),
+    user = document.getElementById('user');
+    
 
 
 
 
 send(userId, 'data'); // TEST 
 
+
+
+
+
 database.on('child_added', read);
 
 
 
 function read(e){
-
     var message = e.val().message,
         sender  = e.val().sender;
 
     console.log(message, sender);
-    
+
 }
+
+
+
 
 function send(senderId, data){
     var msg = database.push({
