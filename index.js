@@ -8,13 +8,45 @@ firebase.initializeApp({
     messagingSenderId: "863612026529"
 });
 
-var 
-    database = firebase.database().ref(),
+var database = firebase.database().ref(),
     pc = new window.webkitRTCPeerConnection({ // https://developer.mozilla.org/ko/docs/Web/API/RTCPeerConnection
         'iceServers': [
             {'url': 'stun:stun.l.google.com:19302'} 
         ]
+    }),
+    userId = 'user'+new Date().getTime();
+
+
+
+
+send(userId, 'data'); // TEST
+
+
+
+// console.log(database);
+// console.log(pc);
+
+
+
+database.on('child_added', function(e){
+    var message = e.val().message,
+        sender  = e.val().sender;
+
+    console.log(message, sender);
+
+});
+
+
+
+
+function send(senderId, data){
+    var msg = database.push({
+        sender : senderId,
+        message : data
     });
 
-console.log(database);
-console.log(pc);
+    msg.remove();
+
+}
+
+
