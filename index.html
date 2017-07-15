@@ -4,11 +4,20 @@
         <title>firebase video chat webrtc</title>
         <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>        
     </head>
+    <style>
+        video{
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+        }
+    </style>
     <body>
 
         <video id="your" muted></video>
 
-        <video id="user"></video>
+        <video id="user" autoplay></video>
+
+        <button onclick="show()" type="button" class="btn btn-primary btn-lg"></span> Call</button>
 
         <script src="index.js"></script>
     </body>
