@@ -7,17 +7,36 @@
     <style>
         video{
             width: 300px;
-            height: 300px;
+            height: 225px;
             border: 1px solid red;
+        }
+        div{
+            float: left;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        button{
+            padding : 0 50 0 50;
         }
     </style>
     <body>
 
-        <video id="your" muted></video>
+        <button onclick="show()" type="button"> 비디오 연결 </button>
+        <br> 
 
-        <video id="user" autoplay></video>
+        <div>
+            <p>나</p>  
 
-        <button onclick="show()" type="button" class="btn btn-primary btn-lg"></span> Call</button>
+            <video id="your" muted></video>            
+        </div>
+
+        <div>
+            <p>상대방</p> 
+
+            <video id="user" autoplay></video>            
+        </div>
+
 
         <script src="index.js"></script>
     </body>
