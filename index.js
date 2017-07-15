@@ -20,18 +20,32 @@ var database = firebase.database().ref(),
 var userId = 'user'+new Date().getTime(),
     your = document.getElementById('your'),
     user = document.getElementById('user');
-    
 
 
 
 
-send(userId, 'data'); // TEST 
+/* 카메라 엑세스 */
+navigator.getMedia = ( 
+    navigator.getUserMedia ||
+    navigator.webkitGetUserMedia ||
+    navigator.mozGetUserMedia
+);
+
+navigator.getMedia({audio:true, video:true}, function(e){
+    your.src = window.URL.createObjectURL(e);
+    your.play();
+
+}, function(e){
+    console.log('err ', e);
+
+});
 
 
 
 
 
 database.on('child_added', read);
+
 
 
 
